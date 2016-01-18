@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+	<body>
+
+		<h2> ID: {{ node.id }} </h2>
+		<h2>Name: {{ node.name }}</h2>
+		<p>Information: {{ node.information }}</p>
+
+		<form action="/nodes/edit/{{ node.id }}/" method="get">
+			{% csrf_token %}
+		<input type="submit" class = "btn btn-primary" value="Edit">
+    	</form>
+
+		<hr size="4" width="100%"  noshade>
+		<h3>Datasources: </h3>
+		{% if datasources %}
+			{% for datasource in datasources %}
+			<a href = "http://127.0.0.1:8000/datasources/get/{{ datasource.id }}/"}>
+				View Datasource {{ datasource.name }}</a>
+			{% endfor %}
+		{% else %}
+			<p>None datasource to show on this node.</p>
+		{% endif %}
+
+	</body>
+</html>
+{% endblock %}

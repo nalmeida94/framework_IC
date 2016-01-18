@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html>
+	<body>
+		<h2> Type of tag ID: {{ tagInfo.id }} </h2>
+		<h2>Name: {{ tagInfo.name }}</h2>
+		<p>Details: {{ tagInfo.description }}</p>
+
+		<form action="/tagInfos/edit/{{ tagInfo.id }}/" method="get">
+		{% csrf_token %}
+        <input type="submit" class = "btn btn-primary" value="Edit">
+    	</form>
+
+		<hr size="4" width="100%"  noshade>
+
+		{% if tags.count > 0 %}
+			<h2>Values Stored: </h2>
+
+			<h2>Tags of this type stored: {{ tags.count }}</h2>
+			{% for tag in tags %}
+
+				<div>
+					<h3><a href = "http://127.0.0.1:8000/tags/get/{{ tag.id }}/">Tag {{ tagInfo.name }}</a></h3>
+						<p> {{ tag.datasource }} </p>
+				</div>
+
+			{% endfor %}
+
+
+		{% else %}
+			<h3>None tag of this type to show.</h3>
+		{% endif %}
+	</body>
+</html>
+{% endblock %}

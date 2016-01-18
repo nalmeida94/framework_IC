@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+	<body>
+		<form action="/radios/search/" method="get">
+		{% csrf_token %}
+		Radio type name:
+        <input type="text" name="textToSearch">
+        <button type="submit" class="btn btn-info">Search</button>
+    	</form>
+
+    	<form action="/radios/add/" method="get">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-success">Add a Radio</button>
+    	</form>
+
+		<h2>Radios</h2>
+		{% if keyword %}
+			<p>Searched by keyword: {{ keyword }}</p>
+		{% endif %}
+
+
+		{% if radios.count > 0 %}
+			{% for radio in radios %}
+				{% for radioInfo in radioInfos %}
+					{% if radio.radioInfo.id == radioInfo.id %}
+						<div>
+							<h3><a href = "/radios/get/{{ radio.id }}/"> {{ radioInfo.name}} </a></h3>
+							{{ radioInfo.description }}
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		{% else %}
+			<p>None Radio to show.</p>
+		{% endif %}
+	</body>
+</html>
+{% endblock %}

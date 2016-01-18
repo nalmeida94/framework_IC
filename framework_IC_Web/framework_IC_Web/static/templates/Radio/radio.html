@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html>
+	<body>
+		<h2> Radio ID: {{ radio.id }} </h2>
+
+		<hr size="4" width="100%"  noshade>
+		<h2> General information: </h2>
+		{% if radioInfo %}
+			<h3> Name: {{ radioInfo.name }} </h3>
+			<p> Description: {{ radioInfo.description }} </p>
+
+			<form action="/radioTipos/get/{{ radioInfo.id }}/" method="get">
+			{% csrf_token %}
+	        <input type="submit" value="View radio´s type">
+	    	</form>
+
+		{% else %}
+			<h3>None general information about this Radio on the system.</h3>
+		{% endif %}
+
+		<hr size="4" width="100%"  noshade>
+		<h2> Specific information: </h2>
+		<p>Full address: {{ radio.endreal }}</p>
+		<p>Datasource: {{ radio.datasource	 }} </p>
+
+		<form action="/radios/edit/{{ radio.id }}/" method="get">
+		{% csrf_token %}
+		<input type="submit" class = "btn btn-primary" value="Edit">
+    	</form>
+
+
+	</body>
+</html>
+{% endblock %}

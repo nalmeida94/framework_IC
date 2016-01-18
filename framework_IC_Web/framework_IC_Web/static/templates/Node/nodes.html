@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+	<body>
+
+		<form action="/nodes/search/" method="get">
+		{% csrf_token %}
+		Node´s name:
+        <input type="text" name="textToSearch">
+        <button type="submit" class="btn btn-info">Search</button>
+    	</form>
+
+    	<form action="/nodes/add/" method="get">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-success">Add a Node</button>
+    	</form>
+
+
+		<h2>Nodes</h2>
+		{% if keyword %}
+			<p>Searched by keyword: {{ keyword }}</p>
+		{% endif %}
+		{% if nodes.count > 0 %}
+
+			{% for node in nodes %}
+			<div>
+				<h3><a href = "/nodes/get/{{ node.id }}/">{{ node.id}} - {{ node.name}} </a></h3>
+				<p>{{ node.information|lower|truncatewords:"10"}}</p>
+			</div>
+			{% endfor %}
+		{% else %}
+			<p>None NODE to show.</p>
+		{% endif %}
+	</body>
+</html>
+{% endblock %}

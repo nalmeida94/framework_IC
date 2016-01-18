@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+	<body>
+		<form action="/chart/selection/" method="get">
+			{% csrf_token %}
+			Tag type name:
+	        <input type="text" name="textToSearch">
+	        <button type="submit" class="btn btn-info">Search</button>
+    	</form>
+
+
+		<h2>Select the Tags to create the chart</h2>
+		{% if keyword %}
+			<p>Searched by keyword: {{ keyword }}</p>
+		{% endif %}
+		<!--
+		<p>{{ tags }}</p>
+		<p>{{ tagInfos }}</p>
+		-->
+		<form action="/chart/chart/" method="get">
+		{% if tags.count > 0 %}						
+			{% for tag in tags %}
+				{% for tagInfo in tagInfos %}
+					{% if tag.taginfo_idtaginfo1_id == tagInfo.idtaginfo %}
+						<!--
+						<div>
+							<h3><a href = "/tags/get/{{ tag.idtag }}/"> {{ tagInfo.nome}} </a></h3>
+							Datasource: {{ tag.datasource_idestacao_meteo }}			
+						</div>
+						-->			
+						<br>
+						<p>
+							<input type="checkbox" name="checks[]" value="{{ tag.idtag }}" />
+							<a href = "/tags/get/{{ tag.idtag }}/"> {{ tagInfo.nome}} </a>
+							Datasource: {{ tag.datasource_idestacao_meteo }}							
+						</p>
+						
+
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			<br>
+			<!--To submit the chart creation-->			
+				{% csrf_token %}			
+		        <button type="submit" class="btn btn-primary">Submit creation</button>	    	
+		{% else %}
+			<p>None TAG to select.</p>		
+		{% endif %}
+		</form>
+	</body>
+</html>
+{% endblock %}

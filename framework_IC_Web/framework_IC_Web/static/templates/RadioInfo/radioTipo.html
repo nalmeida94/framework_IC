@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html>
+	<body>
+		<h2> Type of radio ID: {{ radioInfo.id}} </h2>
+		<h2>Name: {{ radioInfo.name }}</h2>
+		<p>Details: {{ radioInfo.description }}</p>
+
+		<form action="/radioTipos/edit/{{ radioInfo.id }}/" method="get">
+		{% csrf_token %}
+        <input type="submit" class = "btn btn-primary" value="Edit">
+    	</form>
+
+		<hr size="4" width="100%"  noshade>
+
+		{% if radios.count > 0 %}
+			{% for radio in radios %}
+				<div>
+					<h3><a href = "http://127.0.0.1:8000/radios/get/{{ radio.id }}/">Radio {{ radioInfo.name }}</a></h3>
+						<p> Datasource: {{ radio.datasource }} </p>
+				</div>
+			{% endfor %}
+
+
+		{% else %}
+
+		{% endif %}
+	</body>
+</html>
+{% endblock %}

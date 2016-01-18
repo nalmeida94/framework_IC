@@ -1,0 +1,4 @@
+media 		-> onde os usuários fazem upload de arquivos.
+static 		-> arquivos do sistema (imagens, css, javascript).
+static-only 	-> arquivos do sistema depois de usar o $python manage.py collectstatic no terminal
+templates	-> arquivos html do sistema.

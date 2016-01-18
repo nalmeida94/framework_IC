@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+	<body>
+		<form action="/tagInfos/search/" method="get">
+		{% csrf_token %}
+		Tag type name:
+        <input type="text" name="textToSearch">
+        <button type="submit" class="btn btn-info">Search</button>
+
+    	</form>
+
+    	<form action="/tagInfos/add/" method="get">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-success">Add a type of tag</button>
+    	</form>
+
+		<h2>Type of tag</h2>
+		{% if keyword %}
+			<p>Searched by keyword: {{ keyword }}</p>
+		{% endif %}
+		{% if tagInfos.count > 0 %}
+			{% for tagInfo in tagInfos %}
+				<!--
+				{% for tag in tags %}
+					{% if tag.taginfo_idtaginfo1_id == tagInfo.idtaginfo %}
+						<div>
+							<h3><a href = "/tags/get/{{ tag.idtag }}/"> {{ tagInfo.nome}} </a></h3>
+							{{ tag.datasource_idestacao_meteo }}
+						</div>
+					{% endif %}
+				{% endfor %}
+				-->
+					<div>
+						<h3><a href = "/tagInfos/get/{{ tagInfo.id }}/"> {{ tagInfo.name}} </a></h3>
+						{{ tagInfo.description }}
+					</div>
+			{% endfor %}
+		{% else %}
+			<p>None type of tag to show.</p>
+		{% endif %}
+	</body>
+</html>
+{% endblock %}

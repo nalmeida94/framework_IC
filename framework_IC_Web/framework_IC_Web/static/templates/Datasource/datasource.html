@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html>
+	<body>
+		<h2> Datasource ID: {{ datasource.id }} </h2>
+		<h2>Name: {{ datasource.name }}</h2>
+		<p>Manufacturer: {{ datasource.manufacturer }}</p>
+		<p>Model: {{ datasource.model }}</p>
+	
+
+		<form action="/datasources/edit/{{ datasource.id }}/" method="get">
+		{% csrf_token %}
+        <input type="submit" class = "btn btn-primary" value="Edit">
+    	</form>
+
+		<hr size="4" width="100%"  noshade>
+
+		{% if tags.count > 0 %}
+			{% for tag in tags %}
+				{% for tagInfo in tagInfos %}
+					{% if tagInfo.id == tag.tagInfo_id %}
+						<div>
+							<h3><a href = "http://127.0.0.1:8000/tags/get/{{ tag.id }}/">Tag {{ tagInfo.name }}</a></h3>
+							<p> {{ tagInfo.descricao }} </p>
+						</div>
+					{% endif %}
+				{% endfor %}
+
+			{% endfor %}
+
+
+		{% else %}
+
+		{% endif %}
+	</body>
+</html>
+{% endblock %}

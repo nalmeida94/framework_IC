@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+	<body>
+		<form action="/tags/search/" method="get">
+		{% csrf_token %}
+		Tag type name:
+        <input type="text" name="textToSearch">
+        <button type="submit" class="btn btn-info">Search</button>
+    	</form>
+
+    	<form action="/tags/add/" method="get">
+		{% csrf_token %}
+		<button type="submit" class="btn btn-success">Add a Tag</button>
+    	</form>
+
+		<h2>Tags</h2>
+		{% if keyword %}
+			<p>Searched by keyword: {{ keyword }}</p>
+		{% endif %}
+		<!--
+		<p>{{ tags }}</p>
+		<p>{{ tagInfos }}</p>
+		-->
+
+
+		{% if tags.count > 0 %}
+			{% for tag in tags %}
+				{% for tagInfo in tagInfos %}
+					{% if tag.tagInfo_id == tagInfo.id %}
+						<div>
+							<h3><a href = "/tags/get/{{ tag.id }}/"> {{ tagInfo.name}} </a></h3>
+							Datasource: {{ tag.datasource }}
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		{% else %}
+			<p>None TAG to show.</p>
+		{% endif %}
+	</body>
+</html>
+{% endblock %}

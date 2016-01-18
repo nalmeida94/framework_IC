@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+	<body>
+		<form action="/datasources/search/" method="get">
+		{% csrf_token %}
+		Datasource´s name:
+        <input type="text" name="textToSearch">
+        <button type="submit" class="btn btn-info">Search</button>
+    	</form>
+
+
+    	<form action="/datasources/add/" method="get">
+		{% csrf_token %}
+        <button type="submit" class="btn btn-success">Add a Datasource</button>
+    	</form>
+
+		<h2>Datasources</h2>
+		{% if keyword %}
+			<p>Searched by keyword: {{ keyword }}</p>
+		{% endif %}
+		{% if datasources.count > 0 %}
+
+			{% for datasource in datasources %}
+				<div>
+					<h3><a href = "/datasources/get/{{ datasource.id }}/"> {{ datasource.name}} </a></h3>
+					{{ datasource.manufacturer }}
+				</div>
+			{% endfor %}
+		{% else %}
+			<p>None DATASOURCE to show.</p>
+		{% endif %}
+	</body>
+</html>
+{% endblock %}
