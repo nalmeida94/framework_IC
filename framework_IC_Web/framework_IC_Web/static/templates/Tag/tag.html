@@ -26,6 +26,7 @@
 		<p>Diversion: {{ tag.diversion }}</p>
 		<p>Max time waiting: {{ tag.max_time }} ms</p>
 		<p>Conversion rate: {{ tag.conv_rate }}</p>
+		<p>Channel: {{ tag.channel }}</p>
 
 		<form action="/tags/edit/{{ tag.id }}/" method="get">
 		{% csrf_token %}
@@ -35,8 +36,8 @@
 		<hr size="4" width="100%"  noshade>
 		<h2> Values stored: </h2>
 
-		{% if values %}
-
+		{% if values.size > 0 %}
+		{{values.size}}
 			{% load gcharts %}
 
 			{% gcharts %}
@@ -92,10 +93,14 @@
 	                    </div>
 
 	                </div>
+		    <form action="/tags/getValues/{{ tag.id }}/" method="get">
+				{% csrf_token %}
+		    <input type="submit"  class = "btn btn-info" value="Download all tag values as CSV file.">
+		<!-- If doesn´t have values to show -->
+		{% else %}
+			<h3> There isn´t any value stored of this tag. </h3>
 		{% endif %}
-		<form action="/tags/getValues/{{ tag.id }}/" method="get">
-			{% csrf_token %}
-	    <input type="submit"  class = "btn btn-info" value="Download all tag values as CSV file.">
+					
 	  </form>
 
 			
