@@ -92,5 +92,5 @@ class NodeSync(object):
         dateString=temp[0].split("-")
         timeString=temp[1].split(":")
         dateTime = datetime.datetime(int(dateString[0]),int(dateString[1]),int(dateString[2]),int(timeString[0]),int(timeString[1]),int(timeString[2]))
-        miliseg = time.mktime(dateTime.timetuple())
+        miliseg = time.mktime(dateTime.timetuple())*1000
         return float(miliseg)

@@ -1,6 +1,0 @@
-Banco de dados: MySql
-host:127.0.0.1
-user:root
-senha:
-bd:bdic
-
