@@ -23,7 +23,7 @@
 		{% if tags.count > 0 %}						
 			{% for tag in tags %}
 				{% for tagInfo in tagInfos %}
-					{% if tag.taginfo_idtaginfo1_id == tagInfo.idtaginfo %}
+					{% if tag.tagInfo_id == tagInfo.id %}
 						<!--
 						<div>
 							<h3><a href = "/tags/get/{{ tag.idtag }}/"> {{ tagInfo.nome}} </a></h3>
@@ -32,9 +32,11 @@
 						-->			
 						<br>
 						<p>
-							<input type="checkbox" name="checks[]" value="{{ tag.idtag }}" />
-							<a href = "/tags/get/{{ tag.idtag }}/"> {{ tagInfo.nome}} </a>
-							Datasource: {{ tag.datasource_idestacao_meteo }}							
+							<input type="checkbox" name="checks[]" value="{{ tag.id }}" />
+							<a href = "/tags/get/{{ tag.id }}/"> {{ tagInfo.name}} </a>
+							Id: {{ tag.id }}<br>
+							Datasource: {{ tag.datasource }}
+
 						</p>
 						
 

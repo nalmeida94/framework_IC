@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^tagInfos/', include('Tag.urlsTagInfo')),
     url(r'^tags/', include('Tag.urls')),
     url(r'^values/', include('Values.urls')),
+    url(r'^chart/', include('Chart.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 )

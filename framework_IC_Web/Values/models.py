@@ -13,7 +13,7 @@ class Values(models.Model):
     tag = models.ForeignKey(Tag, db_column='tag_idTAG', verbose_name = 'Tag')  # Field name made lowercase.
 
     def __unicode__(self):
-        return u'Tag => %s  - %s - Value => %s' % (self.tag_idtag, self.datahora, self.valor)
+        return u'Tag: %s  - %s - Value: %s' % (self.tag, self.datetime, self.value)
 
     class Meta:
         managed = False

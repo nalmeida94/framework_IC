@@ -30,8 +30,8 @@
 				{% for tagInfo in tagInfos %}
 					{% if tag.tagInfo_id == tagInfo.id %}
 						<div>
-							<h3><a href = "/tags/get/{{ tag.id }}/"> {{ tagInfo.name}} </a></h3>
-							Datasource: {{ tag.datasource }}
+							<h3><a href = "/tags/get/{{ tag.id }}/"> {{tagInfo.name}} </a></h3>
+							Tag id:{{tag.id}} / Datasource: {{ tag.datasource }}
 						</div>
 					{% endif %}
 				{% endfor %}

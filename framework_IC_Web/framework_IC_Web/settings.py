@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'Snapshot',
     'Tag',
     'Values',
-
+    'Chart',
     'gcharts',
 )
 

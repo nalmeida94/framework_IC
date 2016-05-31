@@ -31,7 +31,7 @@ class TagInfo(models.Model):
     description = models.CharField(db_column='DESCRIPTION', max_length=255, blank=True, verbose_name = 'Details')  # Field name made lowercase.
 
     def __unicode__(self):
-        return u'name = %s / description = %s' % (self.name, self.description)
+        return u'%s. Description: %s' % (self.name, self.description)
 
     class Meta:
         managed = False
