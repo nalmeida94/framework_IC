@@ -1531,11 +1531,11 @@ extern char * strrichr(const char *, int);
 
 
 # 16 "config.h"
-#pragma config FOSC = EXTRC
-#pragma config WDTE = ON
+#pragma config FOSC = HS
+#pragma config WDTE = OFF
 #pragma config PWRTE = OFF
-#pragma config BOREN = ON
-#pragma config LVP = ON
+#pragma config BOREN = OFF
+#pragma config LVP = OFF
 #pragma config CPD = OFF
 #pragma config WRT = OFF
 #pragma config CP = OFF
@@ -1568,22 +1568,30 @@ void selectChanel(unsigned char channel);
 # 9 "timer0.h"
 void configTimer();
 
-# 21 "main.c"
+# 13 "main.c"
 bit hasAnError = 0;
 unsigned char receivedData = 'X';
 unsigned char leitura = 0;
+
+unsigned char id = 28;
+unsigned char dia = 0;
+unsigned char mes = 0;
+unsigned char ano = 0;
+unsigned char hora = 0;
+unsigned char minuto = 0;
+unsigned char segundo = 0;
 
 # 29
 unsigned char string[25+1];
 unsigned char string_aux[25+1];
 unsigned char i = 0;
 
-unsigned int data_ADC = 0;
+unsigned short int data_ADC = 0;
 
+unsigned char channel = 1;
 
-
-bit val = 0;
-
+char contLedRD4 = 0;
+bit changing = 0;
 void interrupt interruptions(void){
 
 if (RCIF){
@@ -1617,14 +1625,13 @@ i++;
 
 if(PIR1bits.ADIF){
 data_ADC = ((ADRESH<<8) + ADRESL);
-ADON = 1;
+
 PIR1bits.ADIF = 0;
 }
 
 if(INTCONbits.TMR0IF){
-val = ~val;
-PORTDbits.RD4 = val;
-
+contLedRD4++;
+changing = ~changing;
 INTCONbits.TMR0IF = 0;
 }
 
@@ -1639,19 +1646,27 @@ I2C_Write_Byte(0xD0);
 I2C_Idle();
 I2C_Write_Byte(0x00);
 I2C_Idle();
+
+
 I2C_Write_Byte(0x00);
 I2C_Idle();
-I2C_Write_Byte(0x08);
+
+I2C_Write_Byte(0x30);
 I2C_Idle();
-I2C_Write_Byte(0x08);
+
+I2C_Write_Byte(0x14);
 I2C_Idle();
+
 I2C_Write_Byte(0x04);
 I2C_Idle();
-I2C_Write_Byte(0x17);
+
+I2C_Write_Byte(0x22);
 I2C_Idle();
-I2C_Write_Byte(0x04);
+
+I2C_Write_Byte(0x01);
 I2C_Idle();
-I2C_Write_Byte(0x13);
+
+I2C_Write_Byte(0x16);
 I2C_Idle();
 I2C_Stop();
 }
@@ -1675,10 +1690,9 @@ I2C_Send_NACK();
 I2C_Stop();
 }
 
-void main(void){
-TRISD3 = 0;
-TRISD4 = 0;
 
+void main(void){
+TRISDbits.TRISD3 = 0;
 
 configTimer();
 
@@ -1691,47 +1705,55 @@ configRS232();
 configUSARTInterrupts();
 
 
-
 InitI2C_Master();
 
 
-unsigned char channel = 1;
 selectChanel(channel);
-ADON = 1;
 
 
-
-
-printf("\n\n\rLet The Carnage Begin, now!\n\n");
-
+write_RTC_I2c();
 while (1){
-for(int i=0; i<(2000/20); i++)
-{
-_delay((unsigned long)((20)*(20000000/4000.0)));
-}
+
+if(contLedRD4 == 76*2){
+ADCON0bits.GO_DONE = 1;
+
+read_RTC_I2c(0x04);
+dia = leitura;
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
+
+read_RTC_I2c(0x05);
+mes = leitura;
+_delay((unsigned long)((10)*(20000000/4000.0)));
+
+
+read_RTC_I2c(0x06);
+ano = leitura;
+_delay((unsigned long)((10)*(20000000/4000.0)));
 
 
 read_RTC_I2c(0x02);
-printf("\n\rLeitura Hora: [ %02X ]", leitura);
-
+hora = leitura;
 _delay((unsigned long)((10)*(20000000/4000.0)));
 
 
 read_RTC_I2c(0x01);
-printf("\n\rLeitura Minuto: [ %02X ]", leitura);
-
+minuto = leitura;
 _delay((unsigned long)((10)*(20000000/4000.0)));
 
 
 read_RTC_I2c(0x00);
-printf("\n\rLeitura Segundo: [ %02X ]", leitura);
+segundo = leitura;
+
+
+
+printf("%u&%u&20%02X-%02X-%02X %02X:%02X:%02X", id, data_ADC, ano, mes, dia, hora, minuto, segundo);
 
 _delay((unsigned long)((10)*(20000000/4000.0)));
 
-printf("\n\rRegistrou %u", data_ADC);
-
-_delay((unsigned long)((10)*(20000000/4000.0)));
-
-printf("\n\r\n\r\n\r");
+printf("\n");
+PORTDbits.RD3 = changing;
+contLedRD4 = 0;
+}
 }
 }

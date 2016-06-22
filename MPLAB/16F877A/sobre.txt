@@ -1,0 +1,7 @@
+PROJETOS:
+	16F_Functional_v1.0:
+		Projeto que envia de tempo em tempo. Predefinido o tempo de envio.
+	Test_02-06_16F:
+		Projeto que envia com o pressionar de um botão. Utiliza o RB7 para gerar a requisição de envio.
+	Test_21-06_16F:
+		Projeto que envia de tempos em tempos de forma randômica. Baseado em tempo máximo de envio e tempo mínimo de envio para gerar o tempo randômico nessa faixa.

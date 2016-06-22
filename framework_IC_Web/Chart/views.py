@@ -162,7 +162,7 @@ def chart(request):
 		for value in values:
 			y.append(value.value)
 			x.append(value.datetime)
-			ax.plot_date(value.value, value.datetime, '-')	
+			ax.plot_date(value.value, value.datetime, '-')
 		#ax.plot_date(x, y, '-')
 		ax.xaxis.set_major_formatter(DateFormatter('%d-%m-%Y'))
 		fig.autofmt_xdate()
@@ -191,17 +191,23 @@ def chartPie(request, tag_info_id):
 	canvas.print_png(response)
 	return response
 	"""
+	total = 0
 	qtds = []
 	labels = []
-	tags = Tag.objects.filter(id = tag_info_id)
+	tags = Tag.objects.filter(tagInfo = tag_info_id)
 	for tag in tags:
 		qtd = Values.objects.filter(tag = tag.id).count()
+		total+=qtd
 		qtds.append(str(qtd))
-		labels.append("Tag "+str(tag.id))
+	for tag in tags:
+		qtd = Values.objects.filter(tag = tag.id).count()
+		percent = (qtd*100.0)/total
+		#labels.append("Tag "+str(tag.id)+"- with "+str(qtd)+" values.\n"+str(percent)+"%")
+		labels.append("Tag "+str(tag.id)+"- with "+str(qtd)+" values.\n"+  str(round(percent,2)) +" %")
 	fig = Figure()
 	ax = fig.add_subplot(111, aspect='equal')
 	ax.pie(qtds, labels=labels,)
-	ax.set_title('Tag info '+str(tag_info_id))
+	ax.set_title('Tag info id:'+str(tag_info_id)+"\nWith "+str(total)+" values stored.")
 	canvas=FigureCanvas(fig)
 	response=HttpResponse(content_type="image/png")
 	canvas.print_png(response)

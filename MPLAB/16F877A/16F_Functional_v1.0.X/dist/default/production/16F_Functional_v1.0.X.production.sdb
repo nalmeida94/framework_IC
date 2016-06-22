@@ -54,9 +54,11 @@
 [v _I2C_Idle I2C_Idle `(v  1 e 0 0 ]
 "39 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\main.c
 [v _interruptions interruptions `II(v  1 e 0 0 ]
-"111
+"84
+[v _write_RTC_I2c write_RTC_I2c `(v  1 e 0 0 ]
+"118
 [v _read_RTC_I2c read_RTC_I2c `(v  1 e 0 0 ]
-"130
+"138
 [v _main main `(v  1 e 0 0 ]
 "17 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\timer0.c
 [v _configTimer configTimer `(v  1 e 0 0 ]
@@ -69,7 +71,7 @@
 [v i1_putch putch `(v  1 e 0 0 ]
 "56
 [v _getch getch `(uc  1 e 1 0 ]
-[s S496 . 1 `uc 1 RD0 1 0 :1:0 
+[s S563 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -79,8 +81,8 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "348 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
-[u S505 . 1 `S496 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES505  1 e 1 @8 ]
+[u S572 . 1 `S563 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES572  1 e 1 @8 ]
 [s S61 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
@@ -155,6 +157,18 @@
 ]
 [u S379 . 1 `S368 1 . 1 0 `S375 1 . 1 0 ]
 [v _OPTION_REGbits OPTION_REGbits `VES379  1 e 1 @129 ]
+[s S503 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"1476
+[u S512 . 1 `S503 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES512  1 e 1 @136 ]
 [s S40 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
@@ -253,14 +267,14 @@
 [v _ADCS2 ADCS2 `VEb  1 e 0 @1278 ]
 "2327
 [v _ADFM ADFM `VEb  1 e 0 @1279 ]
-"2333
-[v _ADON ADON `VEb  1 e 0 @248 ]
 "2341
 [v _BRGH BRGH `VEb  1 e 0 @1218 ]
 "2395
 [v _CKP CKP `VEb  1 e 0 @164 ]
 "2407
 [v _CREN CREN `VEb  1 e 0 @196 ]
+"2409
+[v _CSRC CSRC `VEb  1 e 0 @1223 ]
 "2439
 [v _FERR FERR `VEb  1 e 0 @194 ]
 "2443
@@ -269,10 +283,6 @@
 [v _OERR OERR `VEb  1 e 0 @193 ]
 "2483
 [v _PEIE PEIE `VEb  1 e 0 @94 ]
-"2539
-[v _RC3 RC3 `VEb  1 e 0 @59 ]
-"2541
-[v _RC4 RC4 `VEb  1 e 0 @60 ]
 "2557
 [v _RCIE RCIE `VEb  1 e 0 @1125 ]
 "2559
@@ -297,10 +307,10 @@
 [v _SSPOV SSPOV `VEb  1 e 0 @166 ]
 "2625
 [v _SYNC SYNC `VEb  1 e 0 @1220 ]
-"2725
-[v _TRISD3 TRISD3 `VEb  1 e 0 @1091 ]
-"2727
-[v _TRISD4 TRISD4 `VEb  1 e 0 @1092 ]
+"2709
+[v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
+"2711
+[v _TRISC4 TRISC4 `VEb  1 e 0 @1084 ]
 "2745
 [v _TX9 TX9 `VEb  1 e 0 @1222 ]
 "2751
@@ -315,12 +325,26 @@
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
 "362
 [v _hexpowers hexpowers `DCC[4]ui  1 s 8 hexpowers ]
-"21 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\main.c
+"13 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\main.c
 [v _hasAnError hasAnError `b  1 e 0 0 ]
-"22
+"14
 [v _receivedData receivedData `uc  1 e 1 0 ]
-"23
+"15
 [v _leitura leitura `uc  1 e 1 0 ]
+"17
+[v _id id `uc  1 e 1 0 ]
+"18
+[v _dia dia `uc  1 e 1 0 ]
+"19
+[v _mes mes `uc  1 e 1 0 ]
+"20
+[v _ano ano `uc  1 e 1 0 ]
+"21
+[v _hora hora `uc  1 e 1 0 ]
+"22
+[v _minuto minuto `uc  1 e 1 0 ]
+"23
+[v _segundo segundo `uc  1 e 1 0 ]
 "29
 [v _string string `[26]uc  1 e 26 0 ]
 "30
@@ -328,17 +352,22 @@
 "31
 [v _i i `uc  1 e 1 0 ]
 "33
-[v _data_ADC data_ADC `ui  1 e 2 0 ]
+[v _data_ADC data_ADC `us  1 e 2 0 ]
+"35
+[v _channel channel `uc  1 e 1 0 ]
 "37
-[v _val val `b  1 e 0 0 ]
-"130
+[v _contLedRD4 contLedRD4 `uc  1 e 1 0 ]
+"38
+[v _changing changing `b  1 e 0 0 ]
+"138
 [v _main main `(v  1 e 0 0 ]
 {
-"160
-[v main@i i `i  1 a 2 52 ]
-"150
-[v main@channel channel `uc  1 a 1 51 ]
-"189
+"203
+} 0
+"84
+[v _write_RTC_I2c write_RTC_I2c `(v  1 e 0 0 ]
+{
+"116
 } 0
 "53 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\ad.c
 [v _selectChanel selectChanel `(v  1 e 0 0 ]
@@ -348,14 +377,14 @@
 [v selectChanel@channel channel `uc  1 a 1 20 ]
 "94
 } 0
-"111 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\main.c
+"118 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\main.c
 [v _read_RTC_I2c read_RTC_I2c `(v  1 e 0 0 ]
 {
 [v read_RTC_I2c@pos_memoria pos_memoria `uc  1 a 1 wreg ]
 [v read_RTC_I2c@pos_memoria pos_memoria `uc  1 a 1 wreg ]
-"113
+"120
 [v read_RTC_I2c@pos_memoria pos_memoria `uc  1 a 1 22 ]
-"128
+"135
 } 0
 "108 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\i2c.c
 [v _I2C_Write_Byte I2C_Write_Byte `(b  1 e 0 0 ]
@@ -401,23 +430,23 @@
 {
 [v printf@f f `*.24DCCuc  1 a 1 wreg ]
 "1500
-[v printf@idx idx `uc  1 a 1 39 ]
+[v printf@idx idx `uc  1 a 1 16 ]
 "501
-[v printf@width width `i  1 a 2 45 ]
+[v printf@width width `i  1 a 2 23 ]
 "528
-[v printf@val val `ui  1 a 2 42 ]
+[v printf@val val `ui  1 a 2 19 ]
 "499
-[v printf@c c `c  1 a 1 48 ]
+[v printf@c c `c  1 a 1 25 ]
 "508
-[v printf@flag flag `uc  1 a 1 44 ]
+[v printf@flag flag `uc  1 a 1 21 ]
 "506
-[v printf@prec prec `c  1 a 1 41 ]
+[v printf@prec prec `c  1 a 1 18 ]
 "466
-[v printf@ap ap `[1]*.4v  1 a 1 40 ]
+[v printf@ap ap `[1]*.4v  1 a 1 17 ]
 "464
 [v printf@f f `*.24DCCuc  1 a 1 wreg ]
 "533
-[v printf@f f `*.24DCCuc  1 a 1 47 ]
+[v printf@f f `*.24DCCuc  1 a 1 22 ]
 "1541
 } 0
 "46 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\usart.c
@@ -477,7 +506,7 @@
 "17 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\timer0.c
 [v _configTimer configTimer `(v  1 e 0 0 ]
 {
-"34
+"32
 } 0
 "9 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\usart.c
 [v _configRS232 configRS232 `(v  1 e 0 0 ]
@@ -502,7 +531,7 @@
 "39 D:\Workspaces\MPLABXProjects\16F877A\16F_Functional_v1.0.X\main.c
 [v _interruptions interruptions `II(v  1 e 0 0 ]
 {
-"83
+"82
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
 [v i1_printf printf `(i  1 e 2 0 ]

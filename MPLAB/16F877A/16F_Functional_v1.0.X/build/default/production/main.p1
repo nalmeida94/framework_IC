@@ -25,8 +25,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
 "2169
 [v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
-"2333
-[v _ADON `Vb ~T0 @X0 0 e@248 ]
 "448
 [s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S19 . RBIF INTF TMR0IF RBIE INTE TMR0IE PEIE GIE ]
@@ -38,14 +36,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S18 . . . ]
 "465
 [v _INTCONbits `VS18 ~T0 @X0 0 e@11 ]
-"337
-[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S13 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
-"336
-[u S12 `S13 1 ]
-[n S12 . . ]
-"348
-[v _PORTDbits `VS12 ~T0 @X0 0 e@8 ]
 "40 i2c.h
 [v _I2C_Idle `(v ~T0 @X0 0 ef ]
 "32
@@ -61,10 +51,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 "36
 [v _I2C_Send_NACK `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"2725 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
-[v _TRISD3 `Vb ~T0 @X0 0 e@1091 ]
-"2727
-[v _TRISD4 `Vb ~T0 @X0 0 e@1092 ]
+"1465 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S61 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"1464
+[u S60 `S61 1 ]
+[n S60 . . ]
+"1476
+[v _TRISDbits `VS60 ~T0 @X0 0 e@136 ]
 "9 timer0.h
 [v _configTimer `(v ~T0 @X0 0 ef ]
 "11 ad.h
@@ -79,10 +73,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _InitI2C_Master `(v ~T0 @X0 0 ef ]
 "13 ad.h
 [v _selectChanel `(v ~T0 @X0 0 ef1`uc ]
+"1130 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :2 `uc 1 ]
+[n S47 . ADON . GO_nDONE CHS ADCS ]
+"1137
+[s S48 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S48 . . GO CHS0 CHS1 CHS2 ADCS0 ADCS1 ]
+"1146
+[s S49 :2 `uc 1 :1 `uc 1 ]
+[n S49 . . nDONE ]
+"1150
+[s S50 :2 `uc 1 :1 `uc 1 ]
+[n S50 . . GO_DONE ]
+"1129
+[u S46 `S47 1 `S48 1 `S49 1 `S50 1 ]
+[n S46 . . . . . ]
+"1155
+[v _ADCON0bits `VS46 ~T0 @X0 0 e@31 ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "150 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h
 [v __delay `JF1091 ~T0 @X0 0 e ]
 [p i __delay ]
+"337 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S13 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"336
+[u S12 `S13 1 ]
+[n S12 . . ]
+"348
+[v _PORTDbits `VS12 ~T0 @X0 0 e@8 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1157,15 +1176,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 57: extern char * strrchr(const char *, int);
 [; ;string.h: 58: extern char * strrichr(const char *, int);
 "16 config.h
-[p x FOSC=EXTRC ]
+[p x FOSC=HS ]
 "17
-[p x WDTE=ON ]
+[p x WDTE=OFF ]
 "18
 [p x PWRTE=OFF ]
 "19
-[p x BOREN=ON ]
+[p x BOREN=OFF ]
 "20
-[p x LVP=ON ]
+[p x LVP=OFF ]
 "21
 [p x CPD=OFF ]
 "22
@@ -1191,24 +1210,66 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ad.h: 12: void configAD();
 [; ;ad.h: 13: void selectChanel(unsigned char channel);
 [; ;timer0.h: 9: void configTimer();
-"21 main.c
+"13 main.c
 [v _hasAnError `b ~T0 @X0 1 e ]
 [i _hasAnError
 -> 0 `i
 ]
-[; ;main.c: 21: bit hasAnError = 0;
-"22
+[; ;main.c: 13: bit hasAnError = 0;
+"14
 [v _receivedData `uc ~T0 @X0 1 e ]
 [i _receivedData
 -> -> 88 `ui `uc
 ]
-[; ;main.c: 22: unsigned char receivedData = 'X';
-"23
+[; ;main.c: 14: unsigned char receivedData = 'X';
+"15
 [v _leitura `uc ~T0 @X0 1 e ]
 [i _leitura
 -> -> 0 `i `uc
 ]
-[; ;main.c: 23: unsigned char leitura = 0;
+[; ;main.c: 15: unsigned char leitura = 0;
+"17
+[v _id `uc ~T0 @X0 1 e ]
+[i _id
+-> -> 28 `i `uc
+]
+[; ;main.c: 17: unsigned char id = 28;
+"18
+[v _dia `uc ~T0 @X0 1 e ]
+[i _dia
+-> -> 0 `i `uc
+]
+[; ;main.c: 18: unsigned char dia = 0;
+"19
+[v _mes `uc ~T0 @X0 1 e ]
+[i _mes
+-> -> 0 `i `uc
+]
+[; ;main.c: 19: unsigned char mes = 0;
+"20
+[v _ano `uc ~T0 @X0 1 e ]
+[i _ano
+-> -> 0 `i `uc
+]
+[; ;main.c: 20: unsigned char ano = 0;
+"21
+[v _hora `uc ~T0 @X0 1 e ]
+[i _hora
+-> -> 0 `i `uc
+]
+[; ;main.c: 21: unsigned char hora = 0;
+"22
+[v _minuto `uc ~T0 @X0 1 e ]
+[i _minuto
+-> -> 0 `i `uc
+]
+[; ;main.c: 22: unsigned char minuto = 0;
+"23
+[v _segundo `uc ~T0 @X0 1 e ]
+[i _segundo
+-> -> 0 `i `uc
+]
+[; ;main.c: 23: unsigned char segundo = 0;
 "29
 [v _string `uc ~T0 @X0 + -> 25 `i -> 1 `i e ]
 [; ;main.c: 29: unsigned char string[25+1];
@@ -1222,20 +1283,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;main.c: 31: unsigned char i = 0;
 "33
-[v _data_ADC `ui ~T0 @X0 1 e ]
+[v _data_ADC `us ~T0 @X0 1 e ]
 [i _data_ADC
--> -> 0 `i `ui
+-> -> 0 `i `us
 ]
-[; ;main.c: 33: unsigned int data_ADC = 0;
+[; ;main.c: 33: unsigned short int data_ADC = 0;
+"35
+[v _channel `uc ~T0 @X0 1 e ]
+[i _channel
+-> -> 1 `i `uc
+]
+[; ;main.c: 35: unsigned char channel = 1;
 "37
-[v _val `b ~T0 @X0 1 e ]
-[i _val
+[v _contLedRD4 `uc ~T0 @X0 1 e ]
+[i _contLedRD4
+-> -> 0 `i `uc
+]
+[; ;main.c: 37: char contLedRD4 = 0;
+"38
+[v _changing `b ~T0 @X0 1 e ]
+[i _changing
 -> 0 `i
 ]
-[; ;main.c: 37: bit val = 0;
-[v F1281 `(v ~T0 @X0 1 tf ]
+[; ;main.c: 38: bit changing = 0;
+[v F1290 `(v ~T0 @X0 1 tf ]
 "39
-[v _interruptions `IF1281 ~T0 @X0 1 e ]
+[v _interruptions `IF1290 ~T0 @X0 1 e ]
 {
 [; ;main.c: 39: void interrupt interruptions(void){
 [e :U _interruptions ]
@@ -1332,10 +1405,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 71: data_ADC = ((ADRESH<<8) + ADRESL);
 "71
-[e = _data_ADC -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-[; ;main.c: 72: ADON = 1;
-"72
-[e = _ADON -> -> 1 `i `b ]
+[e = _data_ADC -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `us ]
 [; ;main.c: 73: PIR1bits.ADIF = 0;
 "73
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
@@ -1347,81 +1417,69 @@ Version 3.2 HI-TECH Software Intermediate Code
 "76
 [e $ ! != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i 105  ]
 {
-[; ;main.c: 77: val = ~val;
+[; ;main.c: 77: contLedRD4++;
 "77
-[e = _val -> ~ -> _val `ui `b ]
-[; ;main.c: 78: PORTDbits.RD4 = val;
+[e ++ _contLedRD4 -> -> 1 `i `uc ]
+[; ;main.c: 78: changing = ~changing;
 "78
-[e = . . _PORTDbits 0 4 -> -> _val `i `uc ]
-[; ;main.c: 80: INTCONbits.TMR0IF = 0;
-"80
+[e = _changing -> ~ -> _changing `ui `b ]
+[; ;main.c: 79: INTCONbits.TMR0IF = 0;
+"79
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"81
+"80
 }
 [e :U 105 ]
-[; ;main.c: 81: }
-[; ;main.c: 83: }
-"83
+[; ;main.c: 80: }
+[; ;main.c: 82: }
+"82
 [e :UE 97 ]
 }
-"85
+"84
 [v _write_RTC_I2c `(v ~T0 @X0 1 ef ]
-"86
+"85
 {
-[; ;main.c: 85: void write_RTC_I2c()
-[; ;main.c: 86: {
+[; ;main.c: 84: void write_RTC_I2c()
+[; ;main.c: 85: {
 [e :U _write_RTC_I2c ]
 [f ]
-[; ;main.c: 87: I2C_Idle();
+[; ;main.c: 86: I2C_Idle();
+"86
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 87: I2C_Start();
 "87
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 88: I2C_Start();
-"88
 [e ( _I2C_Start ..  ]
-[; ;main.c: 89: I2C_Idle();
+[; ;main.c: 88: I2C_Idle();
+"88
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 89: I2C_Write_Byte(0xD0);
 "89
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 90: I2C_Write_Byte(0xD0);
-"90
 [e ( _I2C_Write_Byte (1 -> -> 208 `i `uc ]
-[; ;main.c: 91: I2C_Idle();
+[; ;main.c: 90: I2C_Idle();
+"90
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 91: I2C_Write_Byte(0x00);
 "91
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 92: I2C_Write_Byte(0x00);
+[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
+[; ;main.c: 92: I2C_Idle();
 "92
-[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
-[; ;main.c: 93: I2C_Idle();
-"93
 [e ( _I2C_Idle ..  ]
-[; ;main.c: 94: I2C_Write_Byte(0x00);
-"94
-[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
-[; ;main.c: 95: I2C_Idle();
+[; ;main.c: 95: I2C_Write_Byte(0x00);
 "95
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 96: I2C_Write_Byte(0x08);
+[e ( _I2C_Write_Byte (1 -> -> 0 `i `uc ]
+[; ;main.c: 96: I2C_Idle();
 "96
-[e ( _I2C_Write_Byte (1 -> -> 8 `i `uc ]
-[; ;main.c: 97: I2C_Idle();
-"97
 [e ( _I2C_Idle ..  ]
-[; ;main.c: 98: I2C_Write_Byte(0x08);
+[; ;main.c: 98: I2C_Write_Byte(0x30);
 "98
-[e ( _I2C_Write_Byte (1 -> -> 8 `i `uc ]
+[e ( _I2C_Write_Byte (1 -> -> 48 `i `uc ]
 [; ;main.c: 99: I2C_Idle();
 "99
 [e ( _I2C_Idle ..  ]
-[; ;main.c: 100: I2C_Write_Byte(0x04);
-"100
-[e ( _I2C_Write_Byte (1 -> -> 4 `i `uc ]
-[; ;main.c: 101: I2C_Idle();
+[; ;main.c: 101: I2C_Write_Byte(0x14);
 "101
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 102: I2C_Write_Byte(0x17);
+[e ( _I2C_Write_Byte (1 -> -> 20 `i `uc ]
+[; ;main.c: 102: I2C_Idle();
 "102
-[e ( _I2C_Write_Byte (1 -> -> 23 `i `uc ]
-[; ;main.c: 103: I2C_Idle();
-"103
 [e ( _I2C_Idle ..  ]
 [; ;main.c: 104: I2C_Write_Byte(0x04);
 "104
@@ -1429,201 +1487,217 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 105: I2C_Idle();
 "105
 [e ( _I2C_Idle ..  ]
-[; ;main.c: 106: I2C_Write_Byte(0x13);
-"106
-[e ( _I2C_Write_Byte (1 -> -> 19 `i `uc ]
-[; ;main.c: 107: I2C_Idle();
+[; ;main.c: 107: I2C_Write_Byte(0x22);
 "107
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 108: I2C_Stop();
+[e ( _I2C_Write_Byte (1 -> -> 34 `i `uc ]
+[; ;main.c: 108: I2C_Idle();
 "108
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 110: I2C_Write_Byte(0x01);
+"110
+[e ( _I2C_Write_Byte (1 -> -> 1 `i `uc ]
+[; ;main.c: 111: I2C_Idle();
+"111
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 113: I2C_Write_Byte(0x16);
+"113
+[e ( _I2C_Write_Byte (1 -> -> 22 `i `uc ]
+[; ;main.c: 114: I2C_Idle();
+"114
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 115: I2C_Stop();
+"115
 [e ( _I2C_Stop ..  ]
-[; ;main.c: 109: }
-"109
+[; ;main.c: 116: }
+"116
 [e :UE 106 ]
 }
-"111
-[v _read_RTC_I2c `(v ~T0 @X0 1 ef1`uc ]
-"112
-{
-[; ;main.c: 111: void read_RTC_I2c(unsigned char pos_memoria)
-[; ;main.c: 112: {
-[e :U _read_RTC_I2c ]
-"111
-[v _pos_memoria `uc ~T0 @X0 1 r1 ]
-"112
-[f ]
-[; ;main.c: 113: I2C_Idle();
-"113
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 114: I2C_Start();
-"114
-[e ( _I2C_Start ..  ]
-[; ;main.c: 115: I2C_Idle();
-"115
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 116: I2C_Write_Byte(0xD0);
-"116
-[e ( _I2C_Write_Byte (1 -> -> 208 `i `uc ]
-[; ;main.c: 117: I2C_Idle();
-"117
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 118: I2C_Write_Byte(pos_memoria);
 "118
-[e ( _I2C_Write_Byte (1 _pos_memoria ]
-[; ;main.c: 119: I2C_Idle();
+[v _read_RTC_I2c `(v ~T0 @X0 1 ef1`uc ]
 "119
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 120: I2C_ReStart();
+{
+[; ;main.c: 118: void read_RTC_I2c(unsigned char pos_memoria)
+[; ;main.c: 119: {
+[e :U _read_RTC_I2c ]
+"118
+[v _pos_memoria `uc ~T0 @X0 1 r1 ]
+"119
+[f ]
+[; ;main.c: 120: I2C_Idle();
 "120
-[e ( _I2C_ReStart ..  ]
-[; ;main.c: 121: I2C_Idle();
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 121: I2C_Start();
 "121
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 122: I2C_Write_Byte(0xD1);
+[e ( _I2C_Start ..  ]
+[; ;main.c: 122: I2C_Idle();
 "122
-[e ( _I2C_Write_Byte (1 -> -> 209 `i `uc ]
-[; ;main.c: 123: I2C_Idle();
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 123: I2C_Write_Byte(0xD0);
 "123
-[e ( _I2C_Idle ..  ]
-[; ;main.c: 124: leitura = I2C_Read_Byte();
+[e ( _I2C_Write_Byte (1 -> -> 208 `i `uc ]
+[; ;main.c: 124: I2C_Idle();
 "124
-[e = _leitura ( _I2C_Read_Byte ..  ]
-[; ;main.c: 125: I2C_Idle();
-"125
 [e ( _I2C_Idle ..  ]
-[; ;main.c: 126: I2C_Send_NACK();
+[; ;main.c: 125: I2C_Write_Byte(pos_memoria);
+"125
+[e ( _I2C_Write_Byte (1 _pos_memoria ]
+[; ;main.c: 126: I2C_Idle();
 "126
-[e ( _I2C_Send_NACK ..  ]
-[; ;main.c: 127: I2C_Stop();
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 127: I2C_ReStart();
 "127
-[e ( _I2C_Stop ..  ]
-[; ;main.c: 128: }
+[e ( _I2C_ReStart ..  ]
+[; ;main.c: 128: I2C_Idle();
 "128
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 129: I2C_Write_Byte(0xD1);
+"129
+[e ( _I2C_Write_Byte (1 -> -> 209 `i `uc ]
+[; ;main.c: 130: I2C_Idle();
+"130
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 131: leitura = I2C_Read_Byte();
+"131
+[e = _leitura ( _I2C_Read_Byte ..  ]
+[; ;main.c: 132: I2C_Idle();
+"132
+[e ( _I2C_Idle ..  ]
+[; ;main.c: 133: I2C_Send_NACK();
+"133
+[e ( _I2C_Send_NACK ..  ]
+[; ;main.c: 134: I2C_Stop();
+"134
+[e ( _I2C_Stop ..  ]
+[; ;main.c: 135: }
+"135
 [e :UE 107 ]
 }
-"130
+"138
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 130: void main(void){
+[; ;main.c: 138: void main(void){
 [e :U _main ]
 [f ]
-[; ;main.c: 131: TRISD3 = 0;
-"131
-[e = _TRISD3 -> -> 0 `i `b ]
-[; ;main.c: 132: TRISD4 = 0;
-"132
-[e = _TRISD4 -> -> 0 `i `b ]
-[; ;main.c: 135: configTimer();
-"135
-[e ( _configTimer ..  ]
-[; ;main.c: 138: configADInterrupt();
-"138
-[e ( _configADInterrupt ..  ]
-[; ;main.c: 139: configAD();
+[; ;main.c: 139: TRISDbits.TRISD3 = 0;
 "139
+[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 141: configTimer();
+"141
+[e ( _configTimer ..  ]
+[; ;main.c: 144: configADInterrupt();
+"144
+[e ( _configADInterrupt ..  ]
+[; ;main.c: 145: configAD();
+"145
 [e ( _configAD ..  ]
-[; ;main.c: 142: configRS232();
-"142
+[; ;main.c: 148: configRS232();
+"148
 [e ( _configRS232 ..  ]
-[; ;main.c: 143: configUSARTInterrupts();
-"143
+[; ;main.c: 149: configUSARTInterrupts();
+"149
 [e ( _configUSARTInterrupts ..  ]
-[; ;main.c: 147: InitI2C_Master();
-"147
-[e ( _InitI2C_Master ..  ]
-"150
-[v _channel `uc ~T0 @X0 1 a ]
-[; ;main.c: 150: unsigned char channel = 1;
-[e = _channel -> -> 1 `i `uc ]
-[; ;main.c: 151: selectChanel(channel);
-"151
-[e ( _selectChanel (1 _channel ]
-[; ;main.c: 152: ADON = 1;
+[; ;main.c: 152: InitI2C_Master();
 "152
-[e = _ADON -> -> 1 `i `b ]
-[; ;main.c: 157: printf("\n\n\rLet The Carnage Begin, now!\n\n");
-"157
-[e ( _printf :s 2C ]
+[e ( _InitI2C_Master ..  ]
+[; ;main.c: 155: selectChanel(channel);
+"155
+[e ( _selectChanel (1 _channel ]
+[; ;main.c: 158: write_RTC_I2c();
+"158
+[e ( _write_RTC_I2c ..  ]
 [; ;main.c: 159: while (1){
 "159
 [e :U 110 ]
 {
-[; ;main.c: 160: for(int i=0; i<(2000/20); i++)
-"160
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i / -> 2000 `i -> 20 `i 112  ]
-[e $U 113  ]
+[; ;main.c: 161: if(contLedRD4 == 76*2){
 "161
-[e :U 112 ]
-[; ;main.c: 161: {
+[e $ ! == -> _contLedRD4 `i * -> 76 `i -> 2 `i 112  ]
 {
-[; ;main.c: 162: _delay((unsigned long)((20)*(20000000/4000.0)));
+[; ;main.c: 162: ADCON0bits.GO_DONE = 1;
 "162
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"163
-}
-"160
-[e ++ _i -> 1 `i ]
-[e $ < _i / -> 2000 `i -> 20 `i 112  ]
-[e :U 113 ]
-"163
-}
-[; ;main.c: 163: }
-[; ;main.c: 166: read_RTC_I2c(0x02);
+[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+[; ;main.c: 164: read_RTC_I2c(0x04);
+"164
+[e ( _read_RTC_I2c (1 -> -> 4 `i `uc ]
+[; ;main.c: 165: dia = leitura;
+"165
+[e = _dia _leitura ]
+[; ;main.c: 166: _delay((unsigned long)((10)*(20000000/4000.0)));
 "166
-[e ( _read_RTC_I2c (1 -> -> 2 `i `uc ]
-[; ;main.c: 167: printf("\n\rLeitura Hora: [ %02X ]", leitura);
-"167
-[e ( _printf , (. :s 3C -> _leitura `i ]
-[; ;main.c: 169: _delay((unsigned long)((10)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 169: read_RTC_I2c(0x05);
 "169
+[e ( _read_RTC_I2c (1 -> -> 5 `i `uc ]
+[; ;main.c: 170: mes = leitura;
+"170
+[e = _mes _leitura ]
+[; ;main.c: 171: _delay((unsigned long)((10)*(20000000/4000.0)));
+"171
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 172: read_RTC_I2c(0x01);
-"172
-[e ( _read_RTC_I2c (1 -> -> 1 `i `uc ]
-[; ;main.c: 173: printf("\n\rLeitura Minuto: [ %02X ]", leitura);
-"173
-[e ( _printf , (. :s 4C -> _leitura `i ]
-[; ;main.c: 175: _delay((unsigned long)((10)*(20000000/4000.0)));
+[; ;main.c: 174: read_RTC_I2c(0x06);
+"174
+[e ( _read_RTC_I2c (1 -> -> 6 `i `uc ]
+[; ;main.c: 175: ano = leitura;
 "175
+[e = _ano _leitura ]
+[; ;main.c: 176: _delay((unsigned long)((10)*(20000000/4000.0)));
+"176
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 178: read_RTC_I2c(0x00);
-"178
-[e ( _read_RTC_I2c (1 -> -> 0 `i `uc ]
-[; ;main.c: 179: printf("\n\rLeitura Segundo: [ %02X ]", leitura);
+[; ;main.c: 179: read_RTC_I2c(0x02);
 "179
-[e ( _printf , (. :s 5C -> _leitura `i ]
+[e ( _read_RTC_I2c (1 -> -> 2 `i `uc ]
+[; ;main.c: 180: hora = leitura;
+"180
+[e = _hora _leitura ]
 [; ;main.c: 181: _delay((unsigned long)((10)*(20000000/4000.0)));
 "181
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 183: printf("\n\rRegistrou %u", data_ADC);
-"183
-[e ( _printf , (. :s 6C _data_ADC ]
-[; ;main.c: 185: _delay((unsigned long)((10)*(20000000/4000.0)));
+[; ;main.c: 184: read_RTC_I2c(0x01);
+"184
+[e ( _read_RTC_I2c (1 -> -> 1 `i `uc ]
+[; ;main.c: 185: minuto = leitura;
 "185
+[e = _minuto _leitura ]
+[; ;main.c: 186: _delay((unsigned long)((10)*(20000000/4000.0)));
+"186
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 187: printf("\n\r\n\r\n\r");
-"187
-[e ( _printf :s 7C ]
-"188
+[; ;main.c: 189: read_RTC_I2c(0x00);
+"189
+[e ( _read_RTC_I2c (1 -> -> 0 `i `uc ]
+[; ;main.c: 190: segundo = leitura;
+"190
+[e = _segundo _leitura ]
+[; ;main.c: 194: printf("%u&%u&20%02X-%02X-%02X %02X:%02X:%02X", id, data_ADC, ano, mes, dia, hora, minuto, segundo);
+"194
+[e ( _printf , , , , , , , , (. :s 2C -> _id `i -> _data_ADC `i -> _ano `i -> _mes `i -> _dia `i -> _hora `i -> _minuto `i -> _segundo `i ]
+[; ;main.c: 196: _delay((unsigned long)((10)*(20000000/4000.0)));
+"196
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 198: printf("\n");
+"198
+[e ( _printf :s 3C ]
+[; ;main.c: 199: PORTDbits.RD3 = changing;
+"199
+[e = . . _PORTDbits 0 3 -> -> _changing `i `uc ]
+[; ;main.c: 200: contLedRD4 = 0;
+"200
+[e = _contLedRD4 -> -> 0 `i `uc ]
+"201
+}
+[e :U 112 ]
+"202
 }
 [e :U 109 ]
 "159
 [e $U 110  ]
 [e :U 111 ]
-[; ;main.c: 188: }
-[; ;main.c: 189: }
-"189
+[; ;main.c: 201: }
+[; ;main.c: 202: }
+[; ;main.c: 203: }
+"203
 [e :UE 108 ]
 }
 [p f _printf 10519556 ]
-[a 6C 10 13 82 101 103 105 115 116 114 111 117 32 37 117 0 ]
-[a 4C 10 13 76 101 105 116 117 114 97 32 77 105 110 117 116 111 58 32 91 32 37 48 50 88 32 93 0 ]
-[a 5C 10 13 76 101 105 116 117 114 97 32 83 101 103 117 110 100 111 58 32 91 32 37 48 50 88 32 93 0 ]
-[a 3C 10 13 76 101 105 116 117 114 97 32 72 111 114 97 58 32 91 32 37 48 50 88 32 93 0 ]
-[a 7C 10 13 10 13 10 13 0 ]
+[a 2C 37 117 38 37 117 38 50 48 37 48 50 88 45 37 48 50 88 45 37 48 50 88 32 37 48 50 88 58 37 48 50 88 58 37 48 50 88 0 ]
 [a 1C 10 13 0 ]
-[a 2C 10 10 13 76 101 116 32 84 104 101 32 67 97 114 110 97 103 101 32 66 101 103 105 110 44 32 110 111 119 33 10 10 0 ]
+[a 3C 10 0 ]
